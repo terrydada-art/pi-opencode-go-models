@@ -1,0 +1,21 @@
+{
+  "_readme": "OpenCode Go 模型清單同步工具的人工覆寫檔。模型能力來源優先序：本檔覆寫 > 能力實測（v1.2.0）> models.dev（api.json 的 opencode-go provider）。本檔只用於『覆寫』或『查無資料時』補值。不需修改時保持 models 為空即可；本檔不會被工具自動改寫。",
+  "_note": "寫入 models.json 的項目會帶有 [自動同步 v…] 註解，重新執行技能時會依最新資料重建；人工手寫的項目不受影響。",
+  "_schema": {
+    "models": {
+      "<model-id>": {
+        "name": "顯示名稱（可省略）",
+        "protocol": "chat | responses | anthropic（可省略，用於強制 API 協定）",
+        "reasoning": "true | false（可省略，覆寫思考能力判定）",
+        "input": "[\"text\"] 或 [\"text\",\"image\"]（可省略）",
+        "contextWindow": "整數，覆寫 models.dev limit.context（可省略）",
+        "maxTokens": "整數，覆寫 models.dev limit.output（可省略）",
+        "maxInputTokens": "整數，寫入 LiteLLM 的 max_input_tokens（可省略）",
+        "maxOutputTokens": "整數，寫入 LiteLLM 的 max_output_tokens（可省略）",
+        "capabilities": "物件，覆寫能力實測結果，例如 {\"vision\": true, \"prompt_caching\": false}（可省略；可用值：system_messages、function_calling、reasoning、tool_choice、native_structured_output、vision、native_streaming、prompt_caching）",
+        "cost": "{\"input\":0,\"output\":0,\"cacheRead\":0,\"cacheWrite\":0}，單位為每 1M token（可省略）"
+      }
+    }
+  },
+  "models": {}
+}
